@@ -24,15 +24,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mImg = findViewById(R.id.imageview);
-        CountDownTimer countDownTimer = new CountDownTimer(5100,1000) {
+        final CountDownTimer countDownTimer = new CountDownTimer(1100,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                if (mCount > 4){
+                    mCount = 0;
+                }
                 mImg.setImageResource(mArrayImages[mCount++]);
             }
 
             @Override
             public void onFinish() {
-
+                this.start();
             }
         };
         countDownTimer.start();
