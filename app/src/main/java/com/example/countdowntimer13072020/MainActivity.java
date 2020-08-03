@@ -5,27 +5,36 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+    ImageView mImg;
+    int[] mArrayImages = {
+            R.drawable.hinh1,
+            R.drawable.hinh2,
+            R.drawable.hinh3,
+            R.drawable.hinh4,
+            R.drawable.hinh5
+    };
+    int mCount = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        ctrl + space : gợi ý code
-//        ctrl + p : xem tham số truyền vào
-//        CountDownTimer countDownTimer = new CountDownTimer(1000,1000) {
-//            @Override
-//            public void onTick(long millisUntilFinished) {
-//                Log.d("BBB",millisUntilFinished + "");
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                Log.d("BBB", "onFinish");
-//            }
-//        };
-//        countDownTimer.start();
+        mImg = findViewById(R.id.imageview);
+        CountDownTimer countDownTimer = new CountDownTimer(5100,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mImg.setImageResource(mArrayImages[mCount++]);
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        };
+        countDownTimer.start();
     }
 }
